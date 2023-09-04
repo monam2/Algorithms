@@ -1,7 +1,7 @@
 #5567 결혼식
 from collections import deque
 
-def DFS(v,graph,visited):
+def BFS(v,graph,visited):
     q = deque()
     visited[v]=True
     q.append(v)
@@ -30,4 +30,4 @@ for i in range(m):
     graph[b].append(a)
     
 visited =[False]*(n+1)
-print(DFS(1,graph,visited))
+print(BFS(1,graph,visited))
