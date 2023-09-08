@@ -1,5 +1,4 @@
 #2960 에라토스테네스의 체
-from collections import deque
 
 n,k = map(int, input().split())
 p = 0
