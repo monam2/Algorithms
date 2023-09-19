@@ -15,7 +15,7 @@ def solution(m, n, board):
         for i in range(n-1): #완전탐색 후 remove배열에 같은 쌍 넣기
             for j in range(m-1):
                 if arr[i][j]==arr[i+1][j]==arr[i][j+1]==arr[i+1][j+1] and arr[i][j] != 'X':
-                    will_rm.append([i,j])
+                    will_rm.append([i,j]) #X는 이미 제거된 블록이므로 제외
                     will_rm.append([i,j+1])
                     will_rm.append([i+1,j])
                     will_rm.append([i+1,j+1])
