@@ -1,4 +1,16 @@
 #프로그래머스 땅따먹기
+
+def solution(land):
+    previousArr = [0,0,0,0]
+    for hang in range(len(land)):
+        newArr = [0,0,0,0]
+        for idx in range(4):
+            newArr[idx] = land[hang][idx] + max(previousArr[:idx]+previousArr[idx+1:])
+        previousArr = newArr
+    return max(previousArr)
+
+print(solution([[1,2,3,5],[5,6,7,8],[4,3,2,1]]))
+
 # def solution(land):
 #     maxV = max(land[0])
 #     idx = land[0].index(maxV)
@@ -36,5 +48,3 @@
 #                 land[i+1][j] = 0
 #                 beforeMax = dp[j]
 #     return max(dp)
-
-print(solution([[1,2,3,5],[5,6,7,8],[4,3,2,1]]))
