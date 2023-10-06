@@ -2,3 +2,7 @@
   1. parseInt()
   2. Math.floor()
   3. ~~ (비트 부정연산자)
+
+삼항 연산자
+  - result = num1===num2 ? true : false;
+  - // result = true/false
