@@ -6,3 +6,10 @@
 삼항 연산자
   - result = num1===num2 ? true : false;
   - // result = true/false
+
+map 메소드 : Array.map((v)=>{return ~~v})
+  - 어떤 값 v를 콜백함수에 따라 맵핑함. 해당 코드는 정수형으로 변환하는 코드
+
+fill 메소드 : Array.fill(0, start, end)
+  - 어떤 배열을 0으로 채움. 기존 값을 수정.
+  - start부터 end까지 인덱스로 범위를 지정할 수 있음.
