@@ -1,0 +1,10 @@
+//프로그래머스 120839 가위 바위 보
+
+function solution(rsp) {
+    const Rsp = {
+        "2":"0",
+        "0":"5",
+        "5":"2",
+    }
+    return rsp.split('').map((v)=>Rsp[v]).join('');
+}
