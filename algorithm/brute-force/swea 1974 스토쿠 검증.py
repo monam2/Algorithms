@@ -8,8 +8,9 @@ for test_case in range(1, T + 1):
     sdoku = [list(map(int, input().split())) for _ in range(9)]
     
     #가로줄 체크
-    dic = {1:False,2:False,3:False,4:False,5:False,6:False,7:False,8:False,9:False}
+    
     for arr in sdoku:
+        dic = {1:False,2:False,3:False,4:False,5:False,6:False,7:False,8:False,9:False}
         for key,val in dic.items():
             if key in arr:
                 dic[key]=True
