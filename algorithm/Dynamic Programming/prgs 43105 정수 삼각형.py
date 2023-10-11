@@ -1,4 +1,4 @@
-#1932 정수삼각형
+#프로그래머스 43105 정수삼각형
 
 def solution(arr):
     for i in range(1,len(arr)):
