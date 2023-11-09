@@ -44,6 +44,8 @@ while q:
 
 print(answer)
 
+#불도 벽이다... 벽에 갖혀서 
+
 # while q and flag:
 #     x,y,dist = q.popleft()
 #     dx = [-1,0,1,0]
