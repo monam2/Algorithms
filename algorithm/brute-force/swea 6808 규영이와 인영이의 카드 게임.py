@@ -18,7 +18,7 @@ for t in range(1,T+1):
     for i in list(permutations(inyoung, 9)):
         gg = 0
         yy = 0
-        for j in range(9):
+        for j in range(9): #라운드 수
             gy = gyuyoung[j]
             iy = i[j]
             if gy > iy: #규영이 카드가 인영이보다 높으면 gg에 합을 저장
