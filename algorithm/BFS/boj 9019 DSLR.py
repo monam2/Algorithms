@@ -6,51 +6,75 @@ L: L 은 n의 각 자릿수를 왼편으로 회전시켜 그 결과를 레지스
 R: R 은 n의 각 자릿수를 오른편으로 회전시켜 그 결과를 레지스터에 저장한다. 이 연산이 끝나면 레지스터에 저장된 네 자릿수는 왼편부터 d4, d1, d2, d3이 된다.
 '''
 from collections import deque
+import sys
+input = sys.stdin.readline
+def Dd(start):
+    new_start = start * 2
+    if new_start > 9999:
+        new_start %= 10000
+    return new_start
+def Ss(start):
+    new_start = start - 1
+    if new_start == -1:
+        new_start = 9999
+    return new_start
+def Ll(start):  # L : 앞에걸 빼서 뒤에 넣음
+    new_start = start%1000 + start//1000
+    return new_start
+def Rr(start):  # R : 뒤에걸 빼서 앞에 넣음
+    new_start = start%10//1 + start//10
+    return new_start
 
 T = int(input())
-for t in range(1, 1 + T):
-    start, end = map(int, input())  # 1234 3412
+for _ in range(T):
+    start, end = map(int, input().split())  # 1234 3412
 
-    dc = ['D', 'S', 'L', 'R']
     q = deque()
     q.append((start,""))
-    visited = {}
-    visited[(start, "")] = True
-    answer = 0
+    visited = [False]*10000
+    visited[start] = True
 
     while q:
-        start, com= q.popleft()
+        start, command = q.popleft()
         if start == end:
-            answer = com
+            print(command)
             break
 
-        if i == 0:  # D
-            new_start = start * 2
-            if new_start > 9999:
-                new_start %= 10000
-        elif i == 1:  # S
-            new_start = start - 1
-            if new_start == 0:
-                new_start = 9999
-        else:  # L #R
-            new_start = list(str(start))
-            new_start = deque(new_start)
-            if i == 2:  # L : 앞에걸 빼서 뒤에 넣음
-                tmp = new_start.popleft()
-                new_start.append(tmp)
-            elif i == 3:  # R : 뒤에걸 빼서 앞에 넣음
-                tmp = new_start.pop()
-                new_start.appendleft(tmp)
+        #D
+        new_start = Dd(start)
+        if visited[new_start] == False:
+            q.append((new_start, command+'D'))
+            visited[new_start] = True
+        #S
+        new_start = Ss(start)
+        if visited[new_start] == False:
+            q.append((new_start, command+'S'))
+            visited[new_start] = True
+        #L
+        new_start = Ll(start)
+        if visited[new_start] == False:
+            q.append((new_start, command+'L'))
+            visited[new_start] = True
+        #R
+        new_start = Rr(start)
+        if visited[new_start] == False:
+            q.append((new_start, command+'R'))
+            visited[new_start] = True
 
 
 
-    for i in range(4):
-        command = dc[i]
-        new_com = com + command
+# else:  # L #R
+#         newList = []
+#         newList.append(start//1000)
+#         newList.append(start%1000//100)
+#         newList.append(start%1000%100//10)
+#         newList.append(start%1000%100%10)
 
-
-            new_start = list(new_start)
-            new_start = int(''.join(new_start))
-
-        visited[(start), new_com] = True
-        q.append((new_com))
+#         new_li = deque(newList)
+#         if i == 2:  # L : 앞에걸 빼서 뒤에 넣음
+#             tmp = new_li.popleft()
+#             new_li.append(tmp)
+#         elif i == 3:  # R : 뒤에걸 빼서 앞에 넣음
+#             tmp = new_li.pop()
+#             new_li.appendleft(tmp)
+#         new_start = 1000*new_li[0] + 100*new_li[1] + 10*new_li[2] + new_li[3]
