@@ -23,4 +23,5 @@ while True:
     s=[]
     visited = [False] * 50
     dfs(0)
+    print()
 
