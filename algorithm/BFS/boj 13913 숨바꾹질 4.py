@@ -37,3 +37,4 @@ n, k = map(int, input().split())
 visited = [False]*100001
 gill = [0]*100001
 result = bfs(n, k)
+print(gill)
