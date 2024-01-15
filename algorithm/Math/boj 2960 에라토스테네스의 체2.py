@@ -14,4 +14,3 @@ while arr:
     arr = new_arr
 
 print(result[k-1])
-            
