@@ -3,7 +3,7 @@
 
 while True:
     stack = []
-    str = list(input())
+    str = input()
     if str == ".":
         break
     for s in str:
@@ -14,13 +14,13 @@ while True:
                 stack.pop()
             else:
                 stack.append(')')
-                continue
+                break
         elif s==']':
             if len(stack) > 0 and stack[-1] == '[':
                 stack.pop()
             else:
                 stack.append(']')
-                continue
+                break
     if len(stack) == 0:
         print('yes')
     else:
