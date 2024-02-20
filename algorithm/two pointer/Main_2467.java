@@ -24,7 +24,6 @@ public class Main_2467 {
 		 * 특성값 갱신 조건
 		 * - 특성값 변수와 특성값을 이루는 두 값을 담을 정수 배열
 		 */
-		
 		n = Integer.parseInt(br.readLine());
 		arr = new int[n];
 		st = new StringTokenizer(br.readLine());
