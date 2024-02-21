@@ -1,0 +1,102 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
+
+public class Main_1759 { //1759 암호만들기
+	//1. 암호는 서로 다른 L개의 알파벳 소문자.
+	//2. 최소 1개의 모음(a,e,i,o,u)과 최소 두 개의 자음
+	//3. 알파벳은 오름차순임(그냥 문자열로 <, > 비교)
+	
+	
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static StringTokenizer st = null;
+	static int l, c;
+	static char[] letter;
+	static Set<Character> mo;
+	static Set<Character> ja;
+	public static void main(String[] args) throws IOException {
+		st = new StringTokenizer(br.readLine());
+		l = Integer.parseInt(st.nextToken());
+		c = Integer.parseInt(st.nextToken());
+		
+		initSet();
+		
+		letter = new char[c];
+		
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < c; i++) {
+			letter[i] = st.nextToken().charAt(0);
+		}
+		Arrays.sort(letter);
+		dfs(0, new char[l], 0, ' ');
+		
+	}//end main
+	
+	private static void dfs(int cnt, char[] arr, int start,char before) {
+		if (cnt==l) {
+			int mCnt = 0;
+			int jCnt=0;
+			for (char c : arr) {
+				if (mo.contains(c)) { //모음이 최소 1개 포함되어 있다면
+					mCnt++;
+				} else if (ja.contains(c)) { //자음이 최소 1개 포함되어 있다면
+					jCnt++;
+				}
+			}
+			
+			if (mCnt>=1 && jCnt>=2) { //모음 최소 1개 & 자음이 최소 두개
+				for (int i = 0; i < arr.length; i++) {
+					System.out.print(arr[i]);
+				}System.out.println();
+			}
+			return;
+		}
+		for (int i = start; i < letter.length; i++) {
+			if (i!=0 && before<letter[i]) {
+				arr[cnt] = letter[i];
+				dfs(cnt+1,arr,i+1,letter[i]);
+			} else if (i==0) {
+				arr[cnt] = letter[i];
+				dfs(cnt+1,arr,i+1,letter[i]);
+			} else continue;
+		}
+		
+	}
+	
+	private static void initSet() {
+		mo = new HashSet<>();
+		ja = new HashSet<>();
+		
+		mo.add('a');
+		mo.add('e');
+		mo.add('i');
+		mo.add('o');
+		mo.add('u');
+		ja.add('a');
+		ja.add('b');
+		ja.add('c');
+		ja.add('d');
+		ja.add('f');
+		ja.add('g');
+		ja.add('h');
+		ja.add('j');
+		ja.add('k');
+		ja.add('l');
+		ja.add('m');
+		ja.add('n');
+		ja.add('p');
+		ja.add('q');
+		ja.add('r');
+		ja.add('s');
+		ja.add('t');
+		ja.add('v');
+		ja.add('w');
+		ja.add('x');
+		ja.add('y');
+		ja.add('z');
+	}
+}//end class
