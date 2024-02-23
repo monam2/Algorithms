@@ -46,7 +46,6 @@ public class Solution_1251 { //swea 1251 하나로
 	
 	static Node[] nodeList;
 	static List<Edge> edgeList;
-	
 	//statics
 	
 	public static void main(String[] args) throws IOException {
