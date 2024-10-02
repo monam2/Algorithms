@@ -9,7 +9,7 @@ v3 = [0] * (2*N)
 
 def dfs(n):
     global answer
-    if (n == N):
+    if n == N:
         answer += 1
         return
     for j in range(N):
