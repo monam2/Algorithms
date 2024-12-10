@@ -1,7 +1,5 @@
 # 11652 카드
 
-from collections import defaultdict
-
 N = int(input())
 nums = {}
 for i in range(N):
