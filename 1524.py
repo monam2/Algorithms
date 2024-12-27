@@ -13,19 +13,18 @@ for _ in range(T):
     n_list = list(map(int, input().split()))
     m_list = list(map(int, input().split()))
 
-    n_list.sort()
-    m_list.sort()
+    n_list.sort(reverse=True)
+    m_list.sort(reverse=True)
+
     while n_list and m_list:
-        if n_list[0] <= m_list[0]:
-            # 세준의 병사가 약하면 세준의 병사 제거
-            n_list.pop(0)
+        if n_list[-1] >= m_list[-1]:
+            m_list.pop()
         else:
-            # 세비의 병사가 약하거나 동점인 경우 세비의 병사 제거
-            m_list.pop(0)
+            n_list.pop()
 
     if n_list:
-        print("S")  # 세준 승리
+        print("S")
     elif m_list:
-        print("B")  # 세비 승리
+        print("B")
     else:
-        print("C")  # 무승부
+        print("C")
